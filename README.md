@@ -4,7 +4,7 @@
 
 ## 在线预览
 
-部署后访问仓库 GitHub Pages 地址（见仓库 About / Settings → Pages）。
+https://youyouzhucc.github.io/ai-appraisal-demo/
 
 ## 本地预览
 
