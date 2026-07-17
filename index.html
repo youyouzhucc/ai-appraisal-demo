@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>AI 估价报告 · Demo</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,700&family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="phone" id="app">
+    <header class="topbar">
+      <div class="topbar-meta">
+        <span class="ai-badge">
+          <span class="ai-dot"></span>
+          AI 估价报告
+        </span>
+        <button class="icon-btn" type="button" aria-label="关闭">×</button>
+      </div>
+
+      <div class="summary">
+        <div class="summary-head">
+          <div class="grade-chip">
+            <span class="grade-label">成色</span>
+            <span class="grade-value">B级 · 日常使用</span>
+          </div>
+          <div class="price-block">
+            <span class="price-label">AI 估价</span>
+            <div class="price-row">
+              <span class="currency">¥</span>
+              <span class="price" id="finalPrice">452</span>
+            </div>
+            <span class="price-hint">市场参考价</span>
+          </div>
+        </div>
+
+        <div class="factor-chips" aria-label="估价关键因素">
+          <span class="factor-chip">瑕疵 3处 · -¥103</span>
+          <span class="factor-chip">行情 缺货热门 · +¥25</span>
+          <span class="factor-chip">配件 有原盒 · ±¥0</span>
+        </div>
+
+        <p class="conclusion" id="conclusion">
+          成色 B 级日常折损为主，叠加鞋底磨损、鞋面脏污、轻度氧化 3 处瑕疵；缺货热门行情小幅回补，原盒齐全无扣减，估得 ¥452。
+        </p>
+      </div>
+    </header>
+
+    <main class="stage">
+      <div class="scan-frame" id="scanFrame">
+        <div class="corner tl"></div>
+        <div class="corner tr"></div>
+        <div class="corner bl"></div>
+        <div class="corner br"></div>
+        <div class="scan-line" aria-hidden="true"></div>
+
+        <div class="shoe-wrap" id="shoeWrap">
+          <img
+            class="shoe"
+            id="shoeImg"
+            src="assets/sneaker-main.png"
+            alt="待估价球鞋"
+            draggable="false"
+          />
+
+          <button
+            class="hotspot"
+            type="button"
+            data-id="sole"
+            style="--x: 56%; --y: 76%;"
+            aria-label="鞋底磨损，扣减 59 元"
+          >
+            <span class="core">1</span>
+          </button>
+
+          <button
+            class="hotspot"
+            type="button"
+            data-id="upper"
+            style="--x: 66%; --y: 48%;"
+            aria-label="鞋面脏污，扣减 25 元"
+          >
+            <span class="core">2</span>
+          </button>
+
+          <button
+            class="hotspot"
+            type="button"
+            data-id="lining"
+            style="--x: 38%; --y: 38%;"
+            aria-label="轻度氧化，扣减 19 元"
+          >
+            <span class="core">3</span>
+          </button>
+
+          <div class="pin-label" data-id="sole" hidden>
+            <span class="pin-title">鞋底磨损</span>
+            <span class="pin-deduct">-¥59</span>
+          </div>
+          <div class="pin-label" data-id="upper" hidden>
+            <span class="pin-title">鞋面脏污</span>
+            <span class="pin-deduct">-¥25</span>
+          </div>
+          <div class="pin-label" data-id="lining" hidden>
+            <span class="pin-title">轻度氧化</span>
+            <span class="pin-deduct">-¥19</span>
+          </div>
+        </div>
+
+        <svg class="leader-svg" id="leaderSvg" aria-hidden="true"></svg>
+      </div>
+
+      <section class="breakdown" aria-label="估价明细">
+        <div class="breakdown-row">
+          <span>全新市场价</span>
+          <strong>¥1299</strong>
+        </div>
+        <div class="breakdown-row mute">
+          <span>成色 · B级日常使用</span>
+          <strong class="neg">-¥769</strong>
+        </div>
+        <div class="breakdown-row mute active-flaws" id="flawsRow">
+          <span>瑕疵 · <em id="flawCount">3</em> 处</span>
+          <strong class="neg" id="flawTotal">-¥103</strong>
+        </div>
+        <div class="breakdown-row mute">
+          <span>行情 · 缺货款/热门款</span>
+          <strong class="pos">+¥25</strong>
+        </div>
+        <div class="breakdown-row mute">
+          <span>配件 · 有原鞋盒</span>
+          <strong>-¥0</strong>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="disclaimer">估价受拍摄光线、角度影响，实际成交价可能有所不同</p>
+      <button class="cta" type="button" id="ctaBtn">再估一件</button>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
