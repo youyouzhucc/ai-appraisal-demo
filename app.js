@@ -342,4 +342,15 @@ document.getElementById("ctaBtn").addEventListener("click", () => {
   boot();
 });
 
+document.getElementById("sellBtn").addEventListener("click", () => {
+  const btn = document.getElementById("sellBtn");
+  const prev = btn.textContent;
+  btn.textContent = "已发起出售";
+  btn.disabled = true;
+  window.setTimeout(() => {
+    btn.textContent = prev;
+    btn.disabled = false;
+  }, 1400);
+});
+
 boot();
